@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menembak Pacar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        
+        body {
+            background-color: pink;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: red;
+        }
+        .container {
+            background-color: white;
+            border: 2px solid red;
+            border-radius: 15px;
+            padding: 20px;
+            display: inline-block;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+        .button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 5px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .button:hover {
+            background-color: darkred;
+        }
+        .hidden {
+            display: none;
+        }
+        .romantic-message {
+            font-size: 24px;
+            color: red;
+            margin-top: 20px;
+        }
+        .broken-heart {
+            font-size: 24px;
+            color: black;
+            margin-top: 20px;
+        }
+        .tombol-tai {
+            background-color: brown;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .tombol-tai:hover {
+            background-color: darkbrown;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my girlfriend?</h1>
+        <button class="button" onclick="sendAnswer('yes')">Mau</button>
+        <button class="button" onclick="sendAnswer('no')">Malas</button>
+        <div id="yesMessage" class="hidden romantic-message">
+            Oke sekarang kamu pacarku yaa!
+        </div>
+        <div id="noMessage" class="hidden broken-heart">
+            Parah orang seganteng gw di tolak
+            <button class="tombol-tai">Tai</button>
+        </div>
+    </div>
+    <script>
+        function sendAnswer(answer) {
+            var email = 'your-email@example.com';  // Ganti dengan email Anda
+            var subject = 'Jawaban dari Temanmu';
+            var body = answer === 'yes' ? 
+                'Oke sekarang kamu pacarku yaa!' : 
+                'Parah orang seganteng gw di tolak';
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+
+            if (answer === 'yes') {
+                document.getElementById('yesMessage').classList.remove('hidden');
+                document.getElementById('noMessage').classList.add('hidden');
+            } else {
+                document.getElementById('yesMessage').classList.add('hidden');
+                document.getElementById('noMessage').classList.remove('hidden');
+            }
+
+            setTimeout(() => {
+                if (answer === 'yes') {
+                    window.location.href = 'yes.html';  // Ganti dengan halaman yang diinginkan
+                } else {
+                    window.location.href = 'no.html';  // Ganti dengan halaman yang diinginkan
+                }
+            }, 3000);  // 3 detik untuk menampilkan pesan sebelum berpindah halaman
+        }
+    </script>
+</body>
+</html>
